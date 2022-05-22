@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WadulV2">
         <activity
+            android:name=".ForgotActivity"
+            android:exported="false" />
+        <activity
             android:name=".AspirasiActivity"
             android:exported="false" />
         <activity

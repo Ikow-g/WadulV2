@@ -11,15 +11,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.wadulv2.databinding.ActivityLoginBinding
+import com.example.wadulv2.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private var inputEmail: EditText? = null
-    private var inputPassword: EditText? = null
-    private var btnSignup: Button? = null
-    private var btnLogin: Button? = null
     private var auth: FirebaseAuth? = null
+    private lateinit var binding : ActivityLoginBinding
 
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +27,11 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        inputEmail = findViewById<View>(R.id.text_email) as EditText
-        inputPassword = findViewById<View>(R.id.text_email) as EditText
-        btnLogin = findViewById<View>(R.id.login_button) as Button
-        btnSignup = findViewById<View>(R.id.register_button) as Button
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        btnSignup!!.setOnClickListener {
+        binding.registerButton.setOnClickListener {
             startActivity(
                 Intent(
                     this@LoginActivity,
@@ -42,9 +39,19 @@ class LoginActivity : AppCompatActivity() {
                 )
             )
         }
-        btnLogin!!.setOnClickListener(View.OnClickListener {
-            val email = inputEmail!!.text.toString()
-            val password = inputPassword!!.text.toString()
+
+        binding.forgotButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@LoginActivity,
+                    ForgotActivity::class.java
+                )
+            )
+        }
+
+        binding.loginButton.setOnClickListener(View.OnClickListener {
+            val email = binding.textEmail.text.toString()
+            val password = binding.textPassword.text.toString()
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(applicationContext, "Enter email address!", Toast.LENGTH_SHORT)
                     .show()
@@ -64,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                     if (!task.isSuccessful) {
                         // there was an error
                         if (password.length < 6) {
-                            inputPassword!!.error = getString(R.string.minimum_password)
+                            binding.textPassword.error = getString(R.string.minimum_password)
                         } else {
                             Toast.makeText(
                                 this@LoginActivity,

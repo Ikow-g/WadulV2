@@ -5,6 +5,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
@@ -35,6 +36,16 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        val pengaduan = findViewById<LinearLayout>(R.id.pengaduan_linear) as LinearLayout
+        pengaduan.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@DashboardActivity,
+                    AspirasiActivity::class.java
+                )
+            )
         }
     }
 }
