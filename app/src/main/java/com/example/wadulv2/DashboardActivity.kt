@@ -43,7 +43,27 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this@DashboardActivity,
+                    PengaduanActivity::class.java
+                )
+            )
+        }
+
+        val aspirasi = findViewById<LinearLayout>(R.id.aspirasi_linear)
+        aspirasi.setOnClickListener{
+            startActivity(
+                Intent(
+                    this@DashboardActivity,
                     AspirasiActivity::class.java
+                )
+            )
+        }
+
+        val tiket = findViewById<LinearLayout>(R.id.tiket_linear)
+        tiket.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@DashboardActivity,
+                    TiketActivity::class.java
                 )
             )
         }

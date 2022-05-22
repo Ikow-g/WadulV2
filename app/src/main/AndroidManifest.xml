@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WadulV2">
         <activity
+            android:name=".PengaduanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TiketActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotActivity"
             android:exported="false" />
         <activity

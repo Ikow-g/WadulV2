@@ -38,81 +38,103 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-            <TextView
-                android:id="@+id/judul"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Daftar"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/reg_nama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Nama"
-                android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/judul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar"
+                    android:layout_marginTop="20dp"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/reg_nik"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="NIK"
-                android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/reg_nama"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nama"
+                    android:layout_marginTop="20dp"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/judul" />
 
-            <EditText
-                android:id="@+id/reg_telepon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="Telepon"
-                android:inputType="textPersonName" />
+                <EditText
+                    android:id="@+id/reg_nik"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="NIK"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reg_nama" />
 
-            <EditText
-                android:id="@+id/reg_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                <EditText
+                    android:id="@+id/reg_password"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reg_email" />
 
-            <EditText
-                android:id="@+id/reg_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword" />
+                <Button
+                    android:id="@+id/backtologin"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sudah memiliki akun? Login di sini!"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/daftar" />
 
-            <Button
-                android:id="@+id/daftar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="30dp"
-                android:text="Daftar" />
+                <EditText
+                    android:id="@+id/reg_telepon"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Telepon"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reg_nik" />
 
-            <Button
-                android:id="@+id/backtologin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="30dp"
-                android:text="Sudah memiliki akun? Login di sini!" />
+                <EditText
+                    android:id="@+id/reg_email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_marginTop="10dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reg_telepon" />
+
+                <Button
+                    android:id="@+id/daftar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Daftar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reg_password" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>

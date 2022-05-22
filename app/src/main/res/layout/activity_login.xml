@@ -38,63 +38,83 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bg">
 
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/judul"
-                android:textAlignment="center"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:text="Login" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:hint="Email"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawablePadding="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="10dp"
-                android:id="@+id/text_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
+                <TextView
+                    android:id="@+id/judul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Login"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:hint="Password"
-                android:drawableStart="@drawable/ic_baseline_lock_24"
-                android:drawablePadding="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="10dp"
-                android:id="@+id/text_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/text_email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="50dp"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/judul" />
 
-            <Button
-                android:id="@+id/login_button"
-                android:layout_marginTop="30dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login" />
+                <EditText
+                    android:id="@+id/text_password"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_email" />
 
-            <Button
-                android:id="@+id/forgot_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="30dp"
-                android:text="Lupa Kata Sandi ?" />
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Login"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_password" />
 
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="30dp"
-                android:text="Belum memiliki akun? Daftar sekarang!" />
+                <Button
+                    android:id="@+id/forgot_button"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lupa Kata Sandi ?"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/register_button" />
+
+                <Button
+                    android:id="@+id/register_button"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/login_button" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
