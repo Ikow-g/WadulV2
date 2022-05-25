@@ -50,6 +50,16 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //balik
+        binding.backtologin.setOnClickListener {
+            startActivity(
+                Intent(
+                    this@RegisterActivity,
+                    LoginActivity::class.java
+                )
+            )
+        }
+
         binding.daftar.setOnClickListener(View.OnClickListener {
 //            Kamus
             val email = binding.regEmail.text.toString().trim { it <= ' ' }
