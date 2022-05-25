@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WadulV2">
         <activity
+            android:name=".LoginProcessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterProcessActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgotActivity"
             android:exported="false" />
         <activity

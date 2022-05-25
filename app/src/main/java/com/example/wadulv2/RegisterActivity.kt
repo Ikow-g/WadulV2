@@ -58,10 +58,6 @@ class RegisterActivity : AppCompatActivity() {
             val nik = binding.regNik.text.toString()
             val telepon = binding.regTelepon.text.toString()
             val email2 = binding.regEmail.text.toString()
-//            Database
-            database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
-            val user = user(namalengkap, nik, telepon, email2)
-            database.child(namalengkap).setValue(user)
 //            Autentikasi
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(applicationContext, "Enter email address!", Toast.LENGTH_SHORT)
@@ -83,14 +79,20 @@ class RegisterActivity : AppCompatActivity() {
 
             //create user
             auth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this@RegisterActivity) { task ->
-                Toast.makeText(this@RegisterActivity,"createUserWithEmail:onComplete:" + task.isSuccessful, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@RegisterActivity,"createUserWithEmail:onComplete:" + task.isSuccessful, Toast.LENGTH_SHORT).show()
                     // If sign in fails, display a message to the user. If sign in succeeds
                     // the auth state listener will be notified and logic to handle the
                     // signed in user can be handled in the listener.
                 if (!task.isSuccessful) {
                     Toast.makeText(this@RegisterActivity, "Authentication failed." + task.exception,Toast.LENGTH_SHORT).show()
                 } else {
-                    startActivity(Intent(this@RegisterActivity, DashboardActivity::class.java))
+                    val intent = Intent(this@RegisterActivity, RegisterProcessActivity::class.java)
+                    intent.putExtra("nama", namalengkap)
+                    intent.putExtra("nik", nik)
+                    intent.putExtra("telepon", telepon)
+                    intent.putExtra("email", email2)
+                    intent.putExtra("password", password)
+                    startActivity(intent)
                     finish()
                 }
             }
