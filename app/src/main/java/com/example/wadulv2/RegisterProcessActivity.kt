@@ -10,11 +10,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.onesignal.OneSignal
 
 class RegisterProcessActivity : AppCompatActivity() {
 
     private var auth: FirebaseAuth? = null
     private lateinit var database : DatabaseReference
+    private val ONESIGNAL_APP_ID = "f2350264-ba52-43ed-a899-fbab7d642860"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,8 @@ class RegisterProcessActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email").toString()
         val password = intent.getStringExtra("password").toString()
 
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar2) as ProgressBar
-        progressBar!!.visibility = View.VISIBLE
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar2)
+        progressBar.visibility = View.VISIBLE
 
         //authenticate user
         auth!!.signInWithEmailAndPassword(email, password)
@@ -53,6 +55,12 @@ class RegisterProcessActivity : AppCompatActivity() {
                 } else {
                     val currentUser = auth!!.currentUser
                     val uid = currentUser?.uid.toString()
+                    // Enable verbose OneSignal logging to debug issues if needed.
+                    OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+                    // OneSignal Initialization
+                    OneSignal.initWithContext(this)
+                    OneSignal.setAppId(ONESIGNAL_APP_ID)
+                    OneSignal.setExternalUserId(uid)
 //                    Database
                     database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
                     val user = user(uid, nama, nik, telepon, email)
