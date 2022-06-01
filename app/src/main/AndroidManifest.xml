@@ -19,7 +19,7 @@
             android:name=".ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".AspirasiActivity"
+            android:name=".PengaduanActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

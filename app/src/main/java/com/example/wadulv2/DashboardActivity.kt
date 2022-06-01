@@ -55,10 +55,11 @@ class DashboardActivity : AppCompatActivity() {
 
         val pengaduan = findViewById<LinearLayout>(R.id.pengaduan_linear)
         pengaduan.setOnClickListener {
-            val intentasp = Intent(this@DashboardActivity, AspirasiActivity::class.java)
+            val intentasp = Intent(this@DashboardActivity, PengaduanActivity::class.java)
             intentasp.putExtra("namalengkap", namalengkap)
             intentasp.putExtra("nik", nik)
             intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
             startActivity(intentasp)
             finish()
         }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AspirasiActivity">
+    tools:context=".PengaduanActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,20 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/FullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:drawableStart="@drawable/ic_baseline_person_white_24"
-            android:drawablePadding="10dp"
-            android:text="Hello, user!"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/bg"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="515dp"
@@ -59,10 +45,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:text="SAMPAIKAN ASPIRASI ANDA"
+                android:text="SAMPAIKAN PENGADUAN ANDA"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -136,7 +122,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/isiasp"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
