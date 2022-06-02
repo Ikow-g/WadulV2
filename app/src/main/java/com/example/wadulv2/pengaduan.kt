@@ -5,7 +5,8 @@ data class pengaduan(
     val isikeperluan: String? = null,
     val isikota: String? = null,
     val isikec: String? = null,
-    val isides: String? = null
+    val isides: String? = null,
+    val isiasp: String? = null
 ){
 
 

@@ -32,8 +32,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="515dp"
-            android:orientation="vertical"
             android:layout_marginHorizontal="30dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,10 +69,10 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Keperluan:"
-                android:textSize="10sp"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"/>
+                android:textSize="10sp" />
 
             <Spinner
                 android:id="@+id/s_keperluan"
@@ -83,10 +83,10 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kabupaten/Kota:"
-                android:textSize="10dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"/>
+                android:text="Kabupaten/Kota:"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
 
             <Spinner
                 android:id="@+id/s_kabupaten"
@@ -97,10 +97,10 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Kecamatan:"
                 android:textColor="@color/black"
-                android:textSize="10dp"
-                android:layout_marginTop="10dp"/>
+                android:textSize="10dp" />
 
             <Spinner
                 android:id="@+id/s_kecamatan"
@@ -111,10 +111,10 @@
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Kelurahan/Desa:"
-                android:textSize="10dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"/>
+                android:textSize="10dp" />
 
             <Spinner
                 android:id="@+id/s_kelurahan"
@@ -133,12 +133,26 @@
 
             <Button
                 android:id="@+id/button2"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Submit" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="158dp"
+            android:layout_marginEnd="307dp"
+            android:layout_marginBottom="525dp"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

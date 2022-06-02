@@ -1,5 +1,6 @@
 package com.example.wadulv2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
@@ -67,43 +68,47 @@ class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener
         ee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerdes!!.adapter = ee
         spinnerdes!!.onItemSelectedListener = this
+
+        binding.button3.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val text: String = parent?.getItemAtPosition(position).toString()
-//        Kamus
-        var isiinstansi = ""
-        var isikeperluan = ""
-        var isikota = ""
-        var isikec = ""
-        var isides = ""
-
-        if(text == "Dinas Perhubungan" || text == "Dinas Kesehatan" || text == "POLRI" || text == "TNI"){
-            isiinstansi = text
-        }else if(text == "Parkir Liar" || text == "Penanganan COVID" || text == "Tindak Kriminal" || text == "Kamtibmas"){
-            isikeperluan = text
-        }else if(text == "Kabupaten Malang" || text == "Kota Malang"){
-            isikota = text
-        }else if(text == "Singosari" || text == "Lowokwaru"){
-            isikec = text
-        }else if(text == "Ardimulyo" || text == "Mojolangu"){
-            isides = text
-        }
-
-//        val isinama:String = intent.getStringExtra("namalengkap").toString()
-//        val isinik:String = intent.getStringExtra("nik").toString()
-//        val isitelp:String = intent.getStringExtra("telepon").toString()
-        val isiuid = UUID.randomUUID().toString()
-
-//        binding = ActivityAspirasiBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        val asp = binding.isiasp.text.toString()
-//
-        binding.button2.setOnClickListener {
-            database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("pengaduan")
-            val pengaduan = pengaduan(isiinstansi, isikeperluan, isikota, isikec, isides)
-            database.child(isiuid).setValue(pengaduan)
-            Toast.makeText(applicationContext, "Berhasil membuat pengaduan", Toast.LENGTH_SHORT).show()
+        if (parent != null) {
+            val text: String = parent.getItemAtPosition(position).toString()
+            var isiinstansi = ""
+            var isikeperluan = ""
+            var isikota = ""
+            var isikec = ""
+            var isides = ""
+            when(parent.id){
+                R.id.s_unitlayanan -> {
+                    isiinstansi = text
+                }
+                R.id.s_keperluan -> {
+                    isikeperluan = text
+                }
+                R.id.s_kabupaten -> {
+                    isikota = text
+                }
+                R.id.s_kecamatan -> {
+                    isikec = text
+                }
+                R.id.s_kelurahan -> {
+                    isides = text
+                }
+            }
+            val isiuid = UUID.randomUUID().toString()
+            val aspirasi = binding.isiasp.text.toString()
+            binding.button2.setOnClickListener {
+                database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("pengaduan")
+                val pengaduan = pengaduan(isiinstansi, isikeperluan, isikota, isikec, isides, aspirasi)
+                database.child(isiuid).setValue(pengaduan)
+                Toast.makeText(applicationContext, "Berhasil membuat pengaduan", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
