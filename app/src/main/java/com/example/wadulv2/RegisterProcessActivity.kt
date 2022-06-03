@@ -1,21 +1,24 @@
+@file:Suppress("NAME_SHADOWING")
+
 package com.example.wadulv2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.onesignal.OneSignal
 
+
+@Suppress("PrivatePropertyName")
 class RegisterProcessActivity : AppCompatActivity() {
 
     private var auth: FirebaseAuth? = null
-    private lateinit var database : DatabaseReference
     private val ONESIGNAL_APP_ID = "f2350264-ba52-43ed-a899-fbab7d642860"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,16 +64,41 @@ class RegisterProcessActivity : AppCompatActivity() {
                     OneSignal.initWithContext(this)
                     OneSignal.setAppId(ONESIGNAL_APP_ID)
                     OneSignal.setExternalUserId(uid)
+//                    Coba tambahkan nama user
+                    val profileUpdates = UserProfileChangeRequest.Builder().setDisplayName(nama).build()
+                    currentUser!!.updateProfile(profileUpdates)
 //                    Database
-                    database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
-                    val user = user(uid, nama, nik, telepon, email)
-                    database.child(uid).setValue(user)
+//                    database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
+//                    val user = user(uid, nik, telepon, email)
+                    saveFireStore(uid, nik, telepon, email)
                     progressBar!!.visibility = View.GONE
-                    Toast.makeText(applicationContext, "Akun berhasil dibuat silahkan login", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@RegisterProcessActivity, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
+//                    database.child(uid).setValue(user)
+//                    progressBar!!.visibility = View.GONE
+//                    Toast.makeText(applicationContext, "Akun berhasil dibuat silahkan login", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this@RegisterProcessActivity, LoginActivity::class.java)
+//                    auth!!.signOut()
+//                    startActivity(intent)
+//                    finish()
                 }
             }
     }
+    private fun saveFireStore(uid: String, nik: String, telepon: String, email: String) {
+        val db = FirebaseFirestore.getInstance()
+        val identitas = hashMapOf(
+            "uid" to  uid,
+            "nik" to nik,
+            "telepon" to telepon,
+            "email" to email
+        )
+        db.collection("users").document(uid).set(identitas).addOnSuccessListener {
+            Toast.makeText(applicationContext, "Akun berhasil dibuat silahkan login", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@RegisterProcessActivity, LoginActivity::class.java)
+            auth!!.signOut()
+            startActivity(intent)
+            finish()
+        }.addOnFailureListener{
+            Toast.makeText(applicationContext, "Pendaftaran gagal ! Silahkan coba kembali", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+
