@@ -70,7 +70,7 @@ class RegisterProcessActivity : AppCompatActivity() {
 //                    Database
 //                    database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
 //                    val user = user(uid, nik, telepon, email)
-                    saveFireStore(uid, nik, telepon, email)
+                    saveFireStore(uid, nama, nik, telepon, email)
                     progressBar!!.visibility = View.GONE
 //                    database.child(uid).setValue(user)
 //                    progressBar!!.visibility = View.GONE
@@ -82,10 +82,11 @@ class RegisterProcessActivity : AppCompatActivity() {
                 }
             }
     }
-    private fun saveFireStore(uid: String, nik: String, telepon: String, email: String) {
+    private fun saveFireStore(uid: String, nama: String, nik: String, telepon: String, email: String) {
         val db = FirebaseFirestore.getInstance()
         val identitas = hashMapOf(
             "uid" to  uid,
+            "nama" to nama,
             "nik" to nik,
             "telepon" to telepon,
             "email" to email

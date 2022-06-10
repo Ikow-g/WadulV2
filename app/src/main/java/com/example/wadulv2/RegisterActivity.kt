@@ -41,10 +41,7 @@ class RegisterActivity : AppCompatActivity() {
         inputTelepon = findViewById<View>(R.id.reg_telepon) as EditText
         inputEmail = findViewById<View>(R.id.reg_email) as EditText
         inputPassword = findViewById<View>(R.id.reg_password) as EditText
-        btnBack = findViewById<View>(R.id.backtologin) as Button
         btnSignUp = findViewById<View>(R.id.daftar) as Button
-
-        btnBack!!.setOnClickListener { finish() }
 
         //            Simpan data kependudukan
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -58,6 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                     LoginActivity::class.java
                 )
             )
+            finish()
         }
 
         binding.daftar.setOnClickListener(View.OnClickListener {
