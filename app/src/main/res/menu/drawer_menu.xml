@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:shownIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Profile"
+            android:icon="@drawable/ic_baseline_person_24_black"
+            android:id="@+id/profile"/>
+    </group>
+
+    <item android:title="Option">
+        <menu>
+            <item android:title="Settings"
+                android:icon="@drawable/ic_baseline_settings_24"
+                android:id="@+id/settings"/>
+            <item android:title="Help Center"
+                android:icon="@drawable/ic_baseline_help_center_24"
+                android:id="@+id/help"/>
+        </menu>
+    </item>
+</menu>

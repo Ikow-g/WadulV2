@@ -6,19 +6,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.GravityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
+    lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-        supportActionBar?.hide()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        supportActionBar?.hide()
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
 //        Ambil data
         mAuth = FirebaseAuth.getInstance()
@@ -79,5 +83,15 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intentasp)
             finish()
         }
+
+        //drawer
+        //semua tutorial pake toolbar, aku pingin biar dia buka drawer tapi pake profile.
+        supportActionBar
+        val toolbar = null
+        setSupportActionBar(toolbar)
+        toggle = ActionBarDrawerToggle(this,drawer_layout,toolbar,R.string.open,R.string.close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
     }
 }
