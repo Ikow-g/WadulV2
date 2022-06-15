@@ -115,27 +115,30 @@
                             <TableRow
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginBottom="20dp">
+                                android:layout_marginBottom="10dp">
 
                                 <LinearLayout
                                     android:id="@+id/pengaduan_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
+                                    android:layout_marginLeft="12dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_pengaduan"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="10dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/callcenter" />
 
                                     <TextView
                                         android:id="@+id/textView1"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Pengaduan"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
@@ -145,21 +148,24 @@
                                     android:id="@+id/aspirasi_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="20dp"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
+                                    android:layout_marginHorizontal="10dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_aspirasi"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="8dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/aspirasi" />
 
                                     <TextView
                                         android:id="@+id/textView2"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Aspirasi"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
@@ -169,20 +175,23 @@
                                     android:id="@+id/tiket_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_caritix"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="10dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/tiket" />
 
                                     <TextView
                                         android:id="@+id/textView3"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Cari Tiket"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
@@ -197,21 +206,24 @@
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="25dp"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
+                                    android:layout_marginLeft="12dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_kantor"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="8dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/kantor" />
 
                                     <TextView
                                         android:id="@+id/textView4"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Kantor Pemerintah"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
@@ -220,21 +232,24 @@
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="20dp"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
+                                    android:layout_marginHorizontal="10dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_fasum"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="8dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/fasum" />
 
                                     <TextView
                                         android:id="@+id/textView5"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Fasilitas Umum"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
@@ -243,20 +258,23 @@
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/shape1"
-                                    android:elevation="10dp"
                                     android:orientation="vertical">
 
                                     <ImageView
                                         android:id="@+id/nav_telp"
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
+                                        android:layout_margin="8dp"
+                                        android:padding="15dp"
+                                        android:background="@drawable/shape1"
+                                        android:elevation="10dp"
                                         android:src="@drawable/telepon" />
 
                                     <TextView
                                         android:id="@+id/textView6"
                                         android:layout_width="100dp"
                                         android:layout_height="40dp"
+                                        android:layout_margin="8dp"
                                         android:text="Nomor Darurat"
                                         android:textAlignment="center"
                                         android:textColor="@color/black" />
