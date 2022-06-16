@@ -1,6 +1,6 @@
 @file:Suppress("NAME_SHADOWING")
 
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.content.Intent
 import android.os.Bundle

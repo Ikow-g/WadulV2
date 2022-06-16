@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFrag"
-        android:name="com.example.wadulv2.LoginFrag"
+        android:name="com.singpentingyakin.wadulv2.LoginFrag"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFrag"
-        android:name="com.example.wadulv2.RegisterFrag"
+        android:name="com.singpentingyakin.wadulv2.RegisterFrag"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,12 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/aspirasiFrag"
-        android:name="com.example.wadulv2.AspirasiFrag"
+        android:name="com.singpentingyakin.wadulv2.AspirasiFrag"
         android:label="fragment_aspirasi"
         tools:layout="@layout/fragment_aspirasi" />
     <fragment
         android:id="@+id/dashboardFrag"
-        android:name="com.example.wadulv2.DashboardFrag"
+        android:name="com.singpentingyakin.wadulv2.DashboardFrag"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action

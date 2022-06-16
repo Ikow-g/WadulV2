@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 data class pengaduan(
     val isiinstansi: String? = null,

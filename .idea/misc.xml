@@ -24,6 +24,7 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_aspirasi.xml" value="0.33" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_forgot.xml" value="0.33" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_login_process.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -32,6 +33,7 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/content_login.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/fragment_aspirasi.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/fragment_dashboard.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/fragment_intro.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/fragment_login.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/WadulV2/app/src/main/res/layout/fragment_register.xml" value="0.17074275362318841" />
       </map>

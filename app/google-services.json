@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:661144773505:android:260b1ccb0a5167adbdbe80",
+        "mobilesdk_app_id": "1:661144773505:android:c89758dc13b8eaa5bdbe80",
         "android_client_info": {
-          "package_name": "com.example.wadulv2"
+          "package_name": "com.singpentingyakin.wadulv2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "661144773505-hp8qpbmaqaei26jpf7e5jq2e5rs6oqq5.apps.googleusercontent.com",
+          "client_id": "661144773505-0k8r90buuc2b6am4ic2kkte7hnbfqkl0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.wadulv2",
+            "package_name": "com.singpentingyakin.wadulv2",
             "certificate_hash": "10feea323ff36f7e20f16cd707167ad2ab30aafe"
           }
         },

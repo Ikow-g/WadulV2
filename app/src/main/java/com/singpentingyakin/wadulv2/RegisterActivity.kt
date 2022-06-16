@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.wadulv2.databinding.ActivityRegisterBinding
+import com.singpentingyakin.wadulv2.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

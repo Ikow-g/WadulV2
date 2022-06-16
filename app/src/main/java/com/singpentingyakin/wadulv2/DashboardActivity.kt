@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.content.ContentValues.TAG
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.wadulv2.databinding.ActivityLoginBinding
+import com.singpentingyakin.wadulv2.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

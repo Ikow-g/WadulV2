@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import android.view.View
 import android.widget.*
-import com.example.wadulv2.databinding.ActivityPengaduanBinding
+import com.singpentingyakin.wadulv2.databinding.ActivityPengaduanBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*

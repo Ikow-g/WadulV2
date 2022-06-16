@@ -1,4 +1,4 @@
-package com.example.wadulv2
+package com.singpentingyakin.wadulv2
 
 import android.content.Intent
 import android.os.Bundle
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
 
-        /**If user is not authenticated, send him to SignInActivity to authenticate first.
+        /**If user is not authenticated, send him to IntroActivity to FAQ first.
          * Else send him to DashboardActivity*/
         Handler().postDelayed({
             if(user != null){
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }else{
-                val signInIntent = Intent(this, LoginActivity::class.java)
+                val signInIntent = Intent(this, IntroActivity::class.java)
                 startActivity(signInIntent)
                 finish()
             }
