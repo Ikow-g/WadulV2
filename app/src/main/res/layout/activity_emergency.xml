@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TicketCheckActivity">
+    tools:context=".EmergencyActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
-                        android:text="CEK TIKET ANDA"
+                        android:text="INFO GAWAT DARURAT"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="22sp"
@@ -78,35 +78,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Nomor Tiket :"
+                        android:text="Lokasi :"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
 
-                    <EditText
-                        android:id="@+id/s_nomortiket"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/status"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:layout_marginTop="10dp"
-                        android:clickable="false"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:gravity="start|top"
-                        android:hint="Status : "
-                        android:inputType="none" />
-
-                    <Button
-                        android:id="@+id/button2ticket"
+                    <Spinner
+                        android:id="@+id/s_lokasigawat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/shape1"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:text="Submit" />
+                        android:layout_marginBottom="20dp"/>
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="171dp"
+                        app:mapId="89eeae4c7adee67d"
+                        tools:context="com.singpentingyakin.wadulv2.OfficeActivity" />
 
                 </LinearLayout>
 

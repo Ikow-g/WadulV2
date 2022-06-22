@@ -44,7 +44,7 @@ class DashboardActivity : AppCompatActivity() {
 
                 }
                 R.id.darurat -> {
-                    val intent = Intent(this, PengaduanActivity::class.java)
+                    val intent = Intent(this, EmergencyActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -105,6 +105,50 @@ class DashboardActivity : AppCompatActivity() {
         val aspirasi = findViewById<LinearLayout>(R.id.aspirasi_linear)
         aspirasi.setOnClickListener {
             val intentasp = Intent(this@DashboardActivity, AspirasiActivity::class.java)
+            intentasp.putExtra("namalengkap", namalengkap)
+            intentasp.putExtra("nik", nik)
+            intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
+            startActivity(intentasp)
+            finish()
+        }
+
+        val cektiket = findViewById<LinearLayout>(R.id.tiket_linear)
+        cektiket.setOnClickListener {
+            val intentasp = Intent(this@DashboardActivity, TicketCheckActivity::class.java)
+            intentasp.putExtra("namalengkap", namalengkap)
+            intentasp.putExtra("nik", nik)
+            intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
+            startActivity(intentasp)
+            finish()
+        }
+
+        val kantor = findViewById<LinearLayout>(R.id.kantor_linear)
+        kantor.setOnClickListener {
+            val intentasp = Intent(this@DashboardActivity, OfficeActivity::class.java)
+            intentasp.putExtra("namalengkap", namalengkap)
+            intentasp.putExtra("nik", nik)
+            intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
+            startActivity(intentasp)
+            finish()
+        }
+
+        val fasum = findViewById<LinearLayout>(R.id.fasum_linear)
+        fasum.setOnClickListener {
+            val intentasp = Intent(this@DashboardActivity, FacilityActivity::class.java)
+            intentasp.putExtra("namalengkap", namalengkap)
+            intentasp.putExtra("nik", nik)
+            intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
+            startActivity(intentasp)
+            finish()
+        }
+
+        val darurat = findViewById<LinearLayout>(R.id.darurat_linear)
+        darurat.setOnClickListener {
+            val intentasp = Intent(this@DashboardActivity, EmergencyActivity::class.java)
             intentasp.putExtra("namalengkap", namalengkap)
             intentasp.putExtra("nik", nik)
             intentasp.putExtra("telepon", telepon)

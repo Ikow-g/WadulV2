@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import com.google.android.gms.location.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.singpentingyakin.wadulv2.databinding.ActivityPengaduanBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_pengaduan.*
@@ -38,6 +39,7 @@ class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener
 
     private lateinit var isdialog: AlertDialog
     private lateinit var binding : ActivityPengaduanBinding
+    lateinit var bottomNav : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,27 @@ class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener
 
         binding = ActivityPengaduanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        bottomNav = findViewById(R.id.bottom_navigation)
+        bottomNav.setOnItemReselectedListener {
+            when(it.itemId){
+                R.id.home -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.darurat -> {
+                    val intent = Intent(this, EmergencyActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.profile -> {
+                    val intent = Intent(this, AspirasiActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
 
 //        Isi unit layanan
         spinnerul = binding.sUnitlayanan

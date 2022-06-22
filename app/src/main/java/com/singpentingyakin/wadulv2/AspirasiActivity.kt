@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.location.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.singpentingyakin.wadulv2.databinding.ActivityAspirasiBinding
 import kotlinx.android.synthetic.main.activity_aspirasi.*
@@ -25,6 +26,7 @@ class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener 
     var unit : String? = null
     private lateinit var binding : ActivityAspirasiBinding
     private lateinit var isdialog: AlertDialog
+    lateinit var bottomNav : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,25 @@ class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener 
 
         binding = ActivityAspirasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        bottomNav = findViewById(R.id.bottom_navigation)
+        bottomNav.setOnItemReselectedListener {
+            when(it.itemId){
+                R.id.home -> {
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.darurat -> {
+                    val intent = Intent(this, EmergencyActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.profile -> {
+
+                }
+            }
+        }
 
         //        Isi unit layanan
         spinnerulasp = binding.sUnitlayananasp
@@ -54,6 +75,12 @@ class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener 
             val perihal = findViewById<EditText>(R.id.s_keperluanasp).text.toString()
             val deskripsi : String = findViewById<EditText>(R.id.isiasp2).text.toString()
             saveFireStore(isiuid, unit!!, perihal, textlokasi, deskripsi)
+        }
+
+        binding.button3.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

@@ -122,6 +122,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="12dp"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -129,9 +130,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="10dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="10dp"
                                         android:src="@drawable/callcenter" />
 
                                     <TextView
@@ -149,6 +150,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginHorizontal="10dp"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -156,9 +158,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="8dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="8dp"
                                         android:src="@drawable/aspirasi" />
 
                                     <TextView
@@ -175,6 +177,7 @@
                                     android:id="@+id/tiket_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -182,9 +185,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="10dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="10dp"
                                         android:src="@drawable/tiket" />
 
                                     <TextView
@@ -204,9 +207,11 @@
                                 android:layout_height="match_parent">
 
                                 <LinearLayout
+                                    android:id="@+id/kantor_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="12dp"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -214,9 +219,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="8dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="8dp"
                                         android:src="@drawable/kantor" />
 
                                     <TextView
@@ -230,9 +235,11 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/fasum_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginHorizontal="10dp"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -240,9 +247,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="8dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="8dp"
                                         android:src="@drawable/fasum" />
 
                                     <TextView
@@ -256,8 +263,10 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/darurat_linear"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:foreground="?attr/selectableItemBackgroundBorderless"
                                     android:orientation="vertical">
 
                                     <ImageView
@@ -265,9 +274,9 @@
                                         android:layout_width="100dp"
                                         android:layout_height="100dp"
                                         android:layout_margin="8dp"
-                                        android:padding="15dp"
                                         android:background="@drawable/shape1"
                                         android:elevation="10dp"
+                                        android:padding="15dp"
                                         android:src="@drawable/telepon" />
 
                                     <TextView
