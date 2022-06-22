@@ -1,87 +1,59 @@
 package com.singpentingyakin.wadulv2
 
 import android.app.AlertDialog
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.icu.util.Calendar
 import android.location.Geocoder
 import android.location.Location
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.location.*
-import com.singpentingyakin.wadulv2.databinding.ActivityPengaduanBinding
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_pengaduan.*
+import com.singpentingyakin.wadulv2.databinding.ActivityAspirasiBinding
+import kotlinx.android.synthetic.main.activity_aspirasi.*
 import java.util.*
 
-class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
+class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener {
 
     private var unitlayanan = arrayOf("Dinas Perhubungan", "Dinas Kesehatan", "POLRI", "TNI")
-    private val c = Calendar.getInstance()
-    private val year = c.get(Calendar.YEAR)
-    private val month = c.get(Calendar.MONTH)
-    private val day = c.get(Calendar.DAY_OF_MONTH)
-    var spinnerul : Spinner? = null
+    var spinnerulasp : Spinner? = null
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
     var unit : String? = null
-    var tanggalfull : String? = null
-    var lat : String? = null
-    var long: String? = null
-
+    private lateinit var binding : ActivityAspirasiBinding
     private lateinit var isdialog: AlertDialog
-    private lateinit var binding : ActivityPengaduanBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pengaduan)
+        setContentView(R.layout.activity_aspirasi)
         supportActionBar?.hide()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
 
-        binding = ActivityPengaduanBinding.inflate(layoutInflater)
+        binding = ActivityAspirasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Isi unit layanan
-        spinnerul = binding.sUnitlayanan
-        spinnerul!!.onItemSelectedListener = this
+        //        Isi unit layanan
+        spinnerulasp = binding.sUnitlayananasp
+        spinnerulasp!!.onItemSelectedListener = this
         val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitlayanan)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerul!!.adapter = aa
-        spinnerul!!.onItemSelectedListener = this
-
-//        Isi tanggal
-        s_tanggal.setOnClickListener {
-            clickDataPicker()
-        }
+        spinnerulasp!!.adapter = aa
+        spinnerulasp!!.onItemSelectedListener = this
 
         val isiuid = UUID.randomUUID().toString()
 
-        binding.button2.setOnClickListener {
+        binding.button2asp.setOnClickListener {
             startLoading()
-            //        Isi lokasi
-            val textlokasi = findViewById<EditText>(R.id.s_lokasi).text.toString()
-            //        Isi keperluan
-            val textkep  = findViewById<EditText>(R.id.s_keperluan).text.toString()
-            //        Isi deskripsi
-            val deskripsi : String = findViewById<EditText>(R.id.isiasp).text.toString()
-            saveFireStore(isiuid, unit!!, textkep, lat!!, long!!,
-                textlokasi, tanggalfull!!, deskripsi, "1")
-        }
-
-        binding.button3.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-            finish()
+            val textlokasi = findViewById<EditText>(R.id.s_lokasiasp).text.toString()
+            val perihal = findViewById<EditText>(R.id.s_keperluanasp).text.toString()
+            val deskripsi : String = findViewById<EditText>(R.id.isiasp2).text.toString()
+            saveFireStore(isiuid, unit!!, perihal, textlokasi, deskripsi)
         }
     }
 
@@ -96,41 +68,26 @@ class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun clickDataPicker() {
-        val dpd = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
-            val tanggalhari = dayOfMonth.toString()
-            val bulanhari = (monthOfYear + 1).toString()
-            val tahunhari = year.toString()
-            tanggalfull = "$tanggalhari-$bulanhari-$tahunhari"
-            s_tanggal.setText("$tanggalhari/$bulanhari/$tahunhari")
-        }, year, month, day)
-        dpd.show()
-    }
-
-    private fun saveFireStore(id: String, unitlayanan: String, keperluan: String, latitude: String, longitude: String, alamat: String, tanggal: String, deskripsi: String, status: String) {
+    private fun saveFireStore(id: String, unitlayanan: String, perihal: String, lokasi: String, deskripsi: String) {
         val db = FirebaseFirestore.getInstance()
         val isipengaduan = hashMapOf(
-            "idpengaduan" to id,
+            "idaspirasi" to id,
             "unitlayanan" to  unitlayanan,
-            "keperluan" to keperluan,
-            "latitude" to latitude,
-            "longitude" to longitude,
-            "alamat" to alamat,
-            "tanggal" to tanggal,
-            "deskripsi" to deskripsi,
-            "status" to status
+            "perihal" to perihal,
+            "lokasi" to lokasi,
+            "deskripsi" to deskripsi
         )
-        db.collection("pengaduan").document(id).set(isipengaduan).addOnSuccessListener {
-            Toast.makeText(applicationContext, "Berhasil membuat pengaduan", Toast.LENGTH_SHORT).show()
+        db.collection("aspirasi").document(id).set(isipengaduan).addOnSuccessListener {
+            Toast.makeText(applicationContext, "Berhasil membuat aspirasi", Toast.LENGTH_SHORT).show()
             isDismiss()
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
             finish()
         }.addOnFailureListener{
-            Toast.makeText(applicationContext, "Pengaduan gagal ! Silahkan coba kembali", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Pembuatan aspirasi gagal ! Silahkan coba kembali", Toast.LENGTH_SHORT).show()
         }
     }
+
     private fun getLastLocation(){
         fusedLocationProviderClient.lastLocation.addOnCompleteListener {task->
             val location: Location? = task.result
@@ -138,9 +95,7 @@ class PengaduanActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener
                 newLocationData()
             }else{
                 Log.d("Debug:" ,"Your Location:"+ location.longitude)
-                s_lokasi.setText("${location.longitude} " + " ${location.latitude} " + getCityName(location.latitude,location.longitude))
-                long = location.longitude.toString()
-                lat = location.latitude.toString()
+                s_lokasiasp.setText("${location.longitude} " + " ${location.latitude} " + getCityName(location.latitude,location.longitude))
             }
         }
     }

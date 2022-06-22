@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PengaduanActivity">
+    tools:context=".TicketCheckActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/menu"
         app:itemBackground="@color/brown"
         app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -68,82 +67,38 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
-                        android:text="SAMPAIKAN PENGADUAN ANDA"
+                        android:text="CEK TIKET ANDA"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Unit Layanan:"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
-
-                    <Spinner
-                        android:id="@+id/s_unitlayanan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Keperluan:"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
-
-                    <EditText
-                        android:id="@+id/s_keperluan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
                         android:id="@+id/textView10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Lokasi :"
+                        android:text="Nomor Tiket :"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
 
                     <EditText
-                        android:id="@+id/s_lokasi"
+                        android:id="@+id/s_nomortiket"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Tanggal Kejadian :"
-                        android:textColor="@color/black"
-                        android:textSize="15dp" />
-
                     <EditText
-                        android:id="@+id/s_tanggal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:focusableInTouchMode="false"/>
-
-                    <EditText
-                        android:id="@+id/isiasp"
+                        android:id="@+id/status"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:layout_marginTop="10dp"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:hint="Keterangan*"
+                        android:hint="Status : "
                         android:inputType="textMultiLine" />
 
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/button2asp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"

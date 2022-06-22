@@ -1,28 +1,60 @@
 package com.singpentingyakin.wadulv2
 
+import android.Manifest
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : AppCompatActivity() {
-
+    private val permissions = arrayOf(Manifest.permission.CAMERA,
+        Manifest.permission.RECORD_AUDIO, Manifest.permission.INTERNET,
+        Manifest.permission.MODIFY_AUDIO_SETTINGS, Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION)
+    private val requestcode = 1
     private lateinit var mAuth: FirebaseAuth
     lateinit var toggle: ActionBarDrawerToggle
+    lateinit var bottomNav : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         supportActionBar?.hide()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        if (!isPermissionGranted()) {
+            askPermissions()
+        }
+
+        bottomNav = findViewById(R.id.bottom_navigation)
+        bottomNav.setOnItemReselectedListener {
+            when(it.itemId){
+                R.id.home -> {
+
+                }
+                R.id.darurat -> {
+                    val intent = Intent(this, PengaduanActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.profile -> {
+                    val intent = Intent(this, AspirasiActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
 
 //        Ambil data
         mAuth = FirebaseAuth.getInstance()
@@ -51,20 +83,6 @@ class DashboardActivity : AppCompatActivity() {
         val emailview = findViewById<TextView>(R.id.Email)
         emailview.text = email
 
-//        database = FirebaseDatabase.getInstance("https://wadulv2-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("users")
-//        database.child(uid).get().addOnSuccessListener {
-//            if (it.exists()){
-//                nik = it.child("nik").value.toString()
-//                telepon = it.child("telepon").value.toString()
-//                val fullname = findViewById<TextView>(R.id.FullName)
-//                fullname.text = namalengkap
-//            }else{
-//                Toast.makeText(this,"Error", Toast.LENGTH_SHORT).show()
-//            }
-//        }.addOnFailureListener{
-//            Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
-//        }
-
         val logout = findViewById<Button>(R.id.Logoutbtn)
         logout.setOnClickListener {
             mAuth.signOut()
@@ -84,6 +102,17 @@ class DashboardActivity : AppCompatActivity() {
             finish()
         }
 
+        val aspirasi = findViewById<LinearLayout>(R.id.aspirasi_linear)
+        aspirasi.setOnClickListener {
+            val intentasp = Intent(this@DashboardActivity, AspirasiActivity::class.java)
+            intentasp.putExtra("namalengkap", namalengkap)
+            intentasp.putExtra("nik", nik)
+            intentasp.putExtra("telepon", telepon)
+            intentasp.putExtra("uid", uid)
+            startActivity(intentasp)
+            finish()
+        }
+
         //drawer
         //semua tutorial pake toolbar, aku pingin biar dia buka drawer tapi pake profile.
         supportActionBar
@@ -93,5 +122,16 @@ class DashboardActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+    }
+    private fun askPermissions() {
+        ActivityCompat.requestPermissions(this, permissions, requestcode)
+    }
+
+    private fun isPermissionGranted(): Boolean {
+        permissions.forEach {
+            if (ActivityCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED)
+                return false
+        }
+        return true
     }
 }
