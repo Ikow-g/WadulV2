@@ -1,12 +1,13 @@
 package com.singpentingyakin.wadulv2
 
+import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -14,9 +15,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.singpentingyakin.wadulv2.databinding.ActivityOfficeBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_office.*
+
 
 class OfficeActivity : AppCompatActivity(), OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
@@ -26,12 +30,33 @@ class OfficeActivity : AppCompatActivity(), OnMapReadyCallback, AdapterView.OnIt
     var unit = String()
     var spinnerul : Spinner? = null
     lateinit var bottomNav : BottomNavigationView
+    private lateinit var isdialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_office)
         supportActionBar?.hide()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        startLoading()
+
+        val rootRef = FirebaseFirestore.getInstance()
+        val subjectsRef = rootRef.collection("kabkota").document("Kabupaten Malang").collection("instansi")
+        val spinner = findViewById<View>(R.id.s_unitlayananoffice) as Spinner
+        spinner.onItemSelectedListener = this
+        val subjects: MutableList<String?> = ArrayList()
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, subjects)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        subjectsRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                isDismiss()
+                for (document in task.result) {
+                    val subject = document.getString("nama_instansi")
+                    subjects.add(subject)
+                }
+                adapter.notifyDataSetChanged()
+            }
+        }
 
         bottomNav = findViewById(R.id.bottom_navigation)
         bottomNav.setOnItemReselectedListener {
@@ -55,12 +80,12 @@ class OfficeActivity : AppCompatActivity(), OnMapReadyCallback, AdapterView.OnIt
         }
 
         //        Isi unit layanan
-        spinnerul = findViewById(R.id.s_unitlayananoffice)
-        spinnerul!!.onItemSelectedListener = this
-        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitlayanan)
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerul!!.adapter = aa
-        spinnerul!!.onItemSelectedListener = this
+//        spinnerul = findViewById(R.id.s_unitlayananoffice)
+//        spinnerul!!.onItemSelectedListener = this
+//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitlayanan)
+//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        spinnerul!!.adapter = aa
+//        spinnerul!!.onItemSelectedListener = this
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
@@ -88,21 +113,13 @@ class OfficeActivity : AppCompatActivity(), OnMapReadyCallback, AdapterView.OnIt
             val text: String = parent.getItemAtPosition(position).toString()
             unit = text
             when (unit) {
-                "Dinas Tata Ruang" -> {
+                "Dinas Pemuda dan Olahraga" -> {
                     latitude = -7.96558
                     longitude = 112.63877
                 }
-                "PDAM" -> {
+                "Dinas Pekerjaan Umum dan Perumahan Rakyat" -> {
                     latitude = -7.92687
                     longitude = 112.65050
-                }
-                "Dinas Kesehatan" -> {
-                    latitude = -8.13655
-                    longitude = 112.57172
-                }
-                "Dinas Perhubungan" -> {
-                    latitude = -7.92937
-                    longitude = 112.65010
                 }
             }
         }
@@ -110,5 +127,20 @@ class OfficeActivity : AppCompatActivity(), OnMapReadyCallback, AdapterView.OnIt
 
     override fun onNothingSelected(arg0: AdapterView<*>) {
 
+    }
+
+    fun startLoading(){
+        /**set View*/
+        val infalter = this.layoutInflater
+        val dialogView = infalter.inflate(R.layout.loading_item,null)
+        /**set Dialog*/
+        val bulider = AlertDialog.Builder(this)
+        bulider.setView(dialogView)
+        bulider.setCancelable(false)
+        isdialog = bulider.create()
+        isdialog.show()
+    }
+    fun isDismiss(){
+        isdialog.dismiss()
     }
 }

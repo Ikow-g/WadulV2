@@ -36,6 +36,7 @@ class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
+        startLoading()
 
         binding = ActivityAspirasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,13 +60,32 @@ class AspirasiActivity : AppCompatActivity(),AdapterView.OnItemSelectedListener 
             }
         }
 
+        val rootRef = FirebaseFirestore.getInstance()
+        val subjectsRef = rootRef.collection("kabkota").document("Kabupaten Malang").collection("instansi")
+        val spinner = findViewById<View>(R.id.s_unitlayananasp) as Spinner
+        spinner.onItemSelectedListener = this
+        val subjects: MutableList<String?> = ArrayList()
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, subjects)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        subjectsRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                isDismiss()
+                for (document in task.result) {
+                    val subject = document.getString("nama_instansi")
+                    subjects.add(subject)
+                }
+                adapter.notifyDataSetChanged()
+            }
+        }
+
         //        Isi unit layanan
-        spinnerulasp = binding.sUnitlayananasp
-        spinnerulasp!!.onItemSelectedListener = this
-        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitlayanan)
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerulasp!!.adapter = aa
-        spinnerulasp!!.onItemSelectedListener = this
+//        spinnerulasp = binding.sUnitlayananasp
+//        spinnerulasp!!.onItemSelectedListener = this
+//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, unitlayanan)
+//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        spinnerulasp!!.adapter = aa
+//        spinnerulasp!!.onItemSelectedListener = this
 
         val isiuid = UUID.randomUUID().toString()
 
